@@ -1,0 +1,88 @@
+------------------------
+IMAGEN
+---------
+
+
+https://codea.app/laravel/reducir-el-tamano-de-una-imagen
+http://lineadecodigo.com/php/alto-y-ancho-de-una-imagen-en-php/
+https://medium.com/@hcastillaq/comprimiendo-im%C3%A1genes-con-laravel-ccc92a0d45e5
+https://diadiadesarrolloweb.wordpress.com/2016/05/08/cambiar-tamano-imagen-laravel/
+https://www.sitepoint.com/mime-types-complete-list/
+
+$input  = array('image' => Input::file('fotoPerfil'));
+
+$reglas = array('image' => 'mimes:jpeg,png');
+
+$validacion = Validator::make($input,  $reglas);
+
+if ($validacion->fails())
+{
+    dd('error');
+}
+
+
+----------------------------------------
+DOC
+-------------------------------------
+
+https://www.danielnabil.com/blog/wordpress-limitar-anadir-archivo-extensiones/
+https://styde.net/almacenamiento-streaming-y-descarga-de-archivos-en-laravel-5-5/
+
+
+
+public function uploadFiles()
+    {
+       $upload_folder = '../files' ;
+       $chapter_id = Input::get( 'chapter_id' ) ;
+       $extallow = ['gif' , 'doc' , 'pdf' , 'jpg' , 'htm' ,
+            'hlp' , 'ppt' , 'rar' , 'txt' , 'zip' , 'xls' , 'png' ] ;
+
+       $data = array( ) ;
+       $data["msg"] = new MessageBag( [
+            "error" => [
+                 'OOOPs seleccione un archivo correcto'
+            ]
+            ] ) ;
+
+
+       if ( !empty( $_FILES ) )
+       {
+          foreach ( $_FILES as $file )
+          {
+             $name = $file['name'] ;
+
+             $ext = substr( $name , -3 ) ;
+             $archivador = $upload_folder . '/' . $name ;
+             $redirect = 'archive/upload' ;
+
+
+
+
+
+
+
+Propongo crear un FormRequest para las validaciones respectivas, con el comando
+
+// reemplazar Model por el nombre del modelo el cuál validará
+php artisan make:request ModelFormRequest  
+
+a partir de esto, generar las reglas, donde la más importante sería un if simple dentro de rules (método que genera el comando , además por el momento retornar true en el método authorize)
+
+public function rules()
+{ 
+
+ $rules = [
+    'uncampo' => 'required',
+    'otrocampo' => 'required|min:5',
+  ];
+  // Si el campo File se selecciono un archivo realizamos las validaciones
+  // respectivas como el tamaño y el tipo 
+  if ( $this->hasFile('File') )
+  {
+    $rules['File'] = ['max:2000','mimes:pdf,docx,doc'];
+  }
+  return $rules;
+}
+
+
+
