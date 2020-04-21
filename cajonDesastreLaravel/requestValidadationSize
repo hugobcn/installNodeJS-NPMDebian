@@ -1,0 +1,26 @@
+https://laravel.com/docs/7.x/validation#rule-max    
+https://laravel.com/docs/7.x/validation#rule-max
+
+According to the documentation:
+
+$validator = Validator::make($request->all(), [
+    'file' => 'max:500000',
+]);
+
+The value is in kilobytes. I.e. max:10240 = max 10 MB.
+shareimprove this answer
+edited Sep 9 '16 at 13:42
+davke
+33011 silver badge66 bronze badges
+answered May 25 '16 at 9:27
+Filip Koblański
+7,32233 gold badges2020 silver badges2929 bronze badges
+
+    7
+    Well... if it were in kilobytes as the documentation states, it should be max:10000 for 10 MB. Otherwise, the documentation should refer to the size as Kibibytes or KiB – shock_gone_wild Jan 3 '18 at 13:26
+    The value is in kilobytes. I.e. max:10240 = max 10 MB. So that means 'file' => 'max:1' means 1 kilobyte? – Marvin May 17 '19 at 15:06 
+
+1
+if the value is already in kilobytes, then it should just be 10000, the 1024 multiplier only applies when going from bits to bytes. – AaronHS Oct 10 '19 at 3:33
+This solution did not work for me. System uploaded 6.5 MB image. Code is $validator = Validator::make($request->all(), [ 'profile_image'=>'mimes:jpeg,jpg,png|max:2000' ]); – Kamlesh Feb 8 at 8:23
+

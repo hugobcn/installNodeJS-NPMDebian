@@ -1,0 +1,45 @@
+   
+
+https://tecadmin.net/clear-cache-laravel-5/
+
+    . Clear Application Cache
+
+    Run the following command to clear the application cache of the Laravel application.
+
+    php artisan cache:clear
+
+    2. Clear Route Cache
+
+    To clear route cache of your Laravel application execute the following command from the shell.
+
+    php artisan route:clear
+
+    3. Clear Configuration Cache
+
+    You can use config:clear to clear the config cache of the Laravel application.
+
+    php artisan config:clear 
+
+    4. Clear Compiled Views Cache
+
+    Also, you may need to clear compiled view files of your Laravel application. To clear compiled view files run the following command from the terminal.
+
+    php artisan view:clear 
+
+Clear Cache in Laravel (Browser)
+
+Most of the shared hosting providers don’t provide SSH access to the systems. In that case, you can clear the Laravel cache by calling the URL in the browser. You can simply place the below code in your routes/web.php file of the Laravel application. Then access this URL in the browser to clear the cache of the Laravel application.
+
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
+1
+2
+3
+4
+	
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});

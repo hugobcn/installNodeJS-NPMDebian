@@ -1,0 +1,36 @@
+    https://parzibyte.me/blog/2019/10/22/evitar-expiracion-sesion-php/
+
+document.addEventListener("DOMContentLoaded", function(){
+    // Invocamos cada 5 segundos ;)
+    const milisegundos = 5 *1000;
+    setInterval(function(){
+        // No esperamos la respuesta de la petición porque no nos importa
+        fetch("./refrescar.php");
+    },milisegundos);
+});
+
+
+<?php
+?><!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Mi página web</title>
+    </head>
+    <body>
+        <p>Aquí el usuario puede tardar lo que quiera, su sesión no se va a
+            cerrar por inactividad</p>
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+                // Invocamos cada 5 segundos ;)
+                const milisegundos = 5 *1000;
+                setInterval(function(){
+                    // No esperamos la respuesta de la petición porque no nos importa
+                    fetch("./refrescar.php");
+                },milisegundos);
+            });
+        </script>
+    </body>
+</html>

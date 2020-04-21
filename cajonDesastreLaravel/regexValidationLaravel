@@ -1,0 +1,34 @@
+   
+$this->validate(request(), [
+    'projectName' => 
+        array(
+            'required',
+            'regex:/(^([a-zA-Z]+)(\d+)?$)/u'
+        )
+];
+
+
+public function passes($attribute, $value)
+{
+    return preg_match('/(^[0-9]+$)+/', $value);
+}
+
+and in your controller you can do something like this
+
+use App\Rules\MobileNo;
+
+$rules = [
+        'phone' => ['required', new MobileNo],
+    ];
+
+'dic' => 'nullable|max:12|regex:/^[a-zA-Z]{2}[0-9]{8}[0-9]*$/',
+
+'name' => ['required', 'regex:/^[A-ZÀÂÇÉÈÊËÎÏÔÛÙÜŸÑÆŒa-zàâçéèêëîïôûùüÿñæœ0-9_.,() ]+$/']
+
+
+$this->validate($request, [
+    'tagsinput' => 'regex:^(#[a-z]+ *)+$'
+]);
+
+
+https://codebriefly.com/secure-user-authentication-regex-validation/  (contraseña con may, tmaño minimo, especiales)

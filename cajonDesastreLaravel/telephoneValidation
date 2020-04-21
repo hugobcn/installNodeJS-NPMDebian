@@ -1,0 +1,6 @@
+https://laravel.com/docs/7.x/validation#rule-max    
+https://laravel.com/docs/7.x/validation#rule-max
+
+'telephone'    => 'required|regex:/(0)[0-9]{9}/'
+
+https://github.com/Propaganistas/Laravel-Phone/blob/master/src/Validation/Phone.php
